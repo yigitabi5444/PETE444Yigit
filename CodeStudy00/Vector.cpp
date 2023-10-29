@@ -2,6 +2,8 @@
 #include <iomanip>
 
 #include "Vector.hpp"
+using namespace std;
+#include <math.h>
 
 namespace LinearAlgebra {
 
