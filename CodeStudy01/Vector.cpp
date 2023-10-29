@@ -3,6 +3,9 @@
 
 #include "Vector.hpp"
 
+using namespace std;
+#include <math.h>
+
 namespace LinearAlgebra {
 
    /* * Vector Member Functions and Operators * */
