@@ -10,7 +10,7 @@ using namespace LinearAlgebra;
 
 void subfunc(ofstream& o);
 
-int main()
+void main()
 {
    ofstream out("Matrix.out");
    out.precision(2);

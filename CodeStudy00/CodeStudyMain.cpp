@@ -7,7 +7,7 @@ using namespace std;
 
 using namespace LinearAlgebra;
 
-int main()
+void main()
 {
    cout << "Hello world" << endl;
 
