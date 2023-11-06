@@ -8,9 +8,9 @@ using namespace std;
 
 using namespace LinearAlgebra;
 
-void subfunc(ofstream& o);
+void subfunc(ofstream &o);
 
-void main()
+int main()
 {
    ofstream out("Matrix.out");
    out.precision(2);
@@ -21,17 +21,17 @@ void main()
    cout << "done!" << endl;
 }
 
-void subfunc(ofstream& o)
+void subfunc(ofstream &o)
 {
-   Vector V({ 1, 1, 1 });
+   Vector V({1, 1, 1});
 
-   Matrix Y({ Vector({ 1, 0, 0}),
-              Vector({ 0, 1, 0}),
-              Vector({ 0, 0, 1}) });
+   Matrix Y({Vector({1, 0, 0}),
+             Vector({0, 1, 0}),
+             Vector({0, 0, 1})});
 
-   Matrix Z({ Vector({ 0,  0,  1}),
-              Vector({ 2, -1,  3}),
-              Vector({ 1,  1,  4}) });
+   Matrix Z({Vector({0, 0, 1}),
+             Vector({2, -1, 3}),
+             Vector({1, 1, 4})});
 
    cout << V << endl;
    cout << endl;
@@ -42,7 +42,7 @@ void subfunc(ofstream& o)
    cout << endl;
    cout << Z * V << endl;
    cout << endl;
-   cout << Z * Y << endl;
+   // cout << Z * Y << endl;
    cout << endl;
    cout << det(Z) << endl;
    cout << endl;
@@ -69,12 +69,14 @@ void subfunc(ofstream& o)
    cout << "Enter Matrix Size for Computation = ";
    cin >> N;
 
-   o << "Matrix Size for Computation = " << N << endl << endl;
+   o << "Matrix Size for Computation = " << N << endl
+     << endl;
 
    Matrix A(N, N), C(N, N);
    Vector B(N), X(N);
 
-   A.MakeZero(); B.MakeZero();
+   A.MakeZero();
+   B.MakeZero();
    // Set the matrix randomly as band matrix with 5 entries in a row
    A.RandomizeBand(-1.0, 5);
    B.Randomize(-1.0, 0.6);
@@ -83,7 +85,8 @@ void subfunc(ofstream& o)
 
    A(2, 6) = 1.5;
 
-   if ( N <= 10 ) {
+   if (N <= 10)
+   {
       o << A << endl;
       o << B << endl;
    }
@@ -99,9 +102,9 @@ void subfunc(ofstream& o)
    X = B / A;
    tFinish = clock();
    X.setprecision(5);
-   o << "The solution took " << tFinish-tStart << " cpu ticks spent, or about "
-             << (tFinish-tStart)/float(CLOCKS_PER_SEC) << " seconds." << endl;
-   o << "Infinity Norm of A*X - B = " << scientific << InfNorm(Acopy*X-Bcopy) << endl;
+   o << "The solution took " << tFinish - tStart << " cpu ticks spent, or about "
+     << (tFinish - tStart) / float(CLOCKS_PER_SEC) << " seconds." << endl;
+   o << "Infinity Norm of A*X - B = " << scientific << InfNorm(Acopy * X - Bcopy) << endl;
    o << X << endl;
    o << endl;
 
@@ -112,13 +115,15 @@ void subfunc(ofstream& o)
    A.Resize(N, N);
    X.Resize(N);
 
-   for (int i = 0; i < N; i++) {
-      for (int j = 0; j < N; j++) {
+   for (int i = 0; i < N; i++)
+   {
+      for (int j = 0; j < N; j++)
+      {
          if (i == j)
             A(i, j) = -2;
-         else if (j == i+1)
+         else if (j == i + 1)
             A(i, j) = 1;
-         else if (j == i-1)
+         else if (j == i - 1)
             A(i, j) = 1;
       }
    }
@@ -129,7 +134,7 @@ void subfunc(ofstream& o)
    cout << "The right hand side vector:" << endl;
    cout << X << endl;
    cout << "The solution vector:" << endl;
-   cout << X/A << endl;
+   cout << X / A << endl;
 
    std::ifstream infile;
    infile.open("Matrix.dat");
@@ -140,8 +145,10 @@ void subfunc(ofstream& o)
 
    A.Resize(N, N);
 
-   for (int i = 0; i < N; i++) {
-      for (int j = 0; j < N; j++) {
+   for (int i = 0; i < N; i++)
+   {
+      for (int j = 0; j < N; j++)
+      {
          infile >> A(i, j);
       }
    }

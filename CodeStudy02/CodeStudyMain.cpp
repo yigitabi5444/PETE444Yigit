@@ -4,9 +4,7 @@
 #include "Matrix.hpp"
 
 using namespace std;
-
 using namespace LinearAlgebra;
-
 // An arbitrary function
 double func(double x) {
    double y = x * sin(x);
@@ -19,7 +17,7 @@ double dfunc(double x) {
    return y;
 }
 
-void main()
+int main()
 {
    double a = -10;
    double b = 10;
